@@ -1,24 +1,22 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
-import { COLORS, IMGS, ROUTES } from '../constants';
-import { Loyalty, Transaction, Profile } from '../screens';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {StyleSheet, Image, Text} from 'react-native';
+import {COLORS, IMGS, ROUTES} from '../constants';
+import {Loyalty, Transaction, Profile} from '../screens';
 import SettingsNavigator from './SettingsNavigator';
 import OrderNavigator from './OrderNavigator';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 // import Ionic from 'react-native-vector-icons/Ionicons';
 import HomeIcon from '../assets/icons/home.png';
 import GroupIcon from '../assets/icons/group.png';
 import MedalIcon from '../assets/icons/medal.png';
 import UserIcon from '../assets/icons/user.png';
 import WalletIcon from '../assets/icons/wallet.png';
-import backicon from "../assets/icons/backicon.png";
-
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 const Tab = createBottomTabNavigator();
 
-function BoldText({ children, style }) {
-  return <Text style={{ ...style, fontWeight: 'bold' }}>{children}</Text>;
+function BoldText({children, style}) {
+  return <Text style={{...style, fontWeight: 'bold'}}>{children}</Text>;
 }
 
 
@@ -27,184 +25,144 @@ function BottomTabNavigator() {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaProvider style={styles.container}>
-      <Tab.Navigator
-        initialRouteName={ROUTES.ORDER_TAB}
-        screenOptions={({ route }) => ({
-          tabBarActiveTintColor: COLORS.primary,
-          tabBarInactiveTintColor: 'black',
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            height: 50,
-            position: 'absolute',
-            bottom: 0,
-          },
-        })}>
-
-        <Tab.Screen
-          name={ROUTES.ORDER_TAB}
-          component={OrderNavigator}
-          options={{
-            tabBarLabel: ({ color, focused }) => (
-              <BoldText style={{ color }}>Home</BoldText>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={HomeIcon}
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? COLORS.primary : '#333',
-                }}
-              />
-            ),
-
-            headerTintColor: COLORS.white,
-            headerStyle: {
-              backgroundColor: COLORS.primary,
+    <SafeAreaProvider style = {styles.container}>
+        <Tab.Navigator
+          initialRouteName={ROUTES.ORDER_TAB}
+          screenOptions={({route}) => ({
+            tabBarActiveTintColor: COLORS.primary,
+            tabBarInactiveTintColor: 'black',
+            tabBarShowLabel: false,
+            tabBarStyle: {
+              height: 50,
+              position: 'absolute',
+              bottom: 0,
             },
-          }}
-        />
-        <Tab.Screen
-          name={ROUTES.WALLET}
-          component={Loyalty}
-          options={{
-            tabBarLabel: ({ color, focused }) => (
-              <BoldText style={{ color }}>Wallet</BoldText>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={WalletIcon}
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? COLORS.primary : '#333',
-                }}
-              />
-            ),
-
-            headerTintColor: COLORS.white,
-            headerStyle: {
-              backgroundColor: COLORS.primary,
-            },
-          }}
-        />
-
-        <Tab.Screen
-          name={ROUTES.LOYALTY}
-          component={Loyalty}
-          options={({ navigation }) => ({
-            tabBarLabel: ({ color, focused }) => (
-              <BoldText style={{ color }}>Loyalty</BoldText>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={MedalIcon}
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? COLORS.primary : '#333',
-                }}
-              />
-            ),
-            headerTitle: 'Loyalty Settings',
-            headerTintColor: COLORS.black,
-            headerStyle: {
-              backgroundColor: COLORS.white,
-            },
-
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => navigation.goBack()}>
+          })}>
+            
+          <Tab.Screen
+            name={ROUTES.ORDER_TAB}
+            component={OrderNavigator}
+            options={{
+              tabBarLabel: ({color, focused}) => (
+                <BoldText style={{color}}>Home</BoldText>
+              ),
+              tabBarIcon: ({focused}) => (
                 <Image
-                  source={backicon}
+                  source={HomeIcon}
                   style={{
-                    width: 15,
-                    height: 15,
-                    marginLeft: 15, // Adjust the margin as needed
+                    width: 25,
+                    height: 25,
+                    tintColor: focused ? COLORS.primary : '#333',
                   }}
                 />
-              </TouchableOpacity>
-            ),
+              ),
 
-            headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-               <Text style = {{width: 40, height: 40,  marginRight: 15, marginTop: 20, color:"blue"}}>Save</Text>
-              </TouchableOpacity>
-            ),
-          })}
-        />
-
-
-        <Tab.Screen
-          name={ROUTES.SETTINGS_NAVIGATOR}
-          component={SettingsNavigator}
-          options={{
-            tabBarLabel: ({ color, focused }) => (
-              <BoldText style={{ color }}>Settings</BoldText>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={GroupIcon}
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? COLORS.primary : '#333',
-                }}
-              />
-            ),
-
-            headerTintColor: COLORS.white,
-            headerStyle: {
-              backgroundColor: COLORS.primary,
-            },
-          }}
-        />
-
-        <Tab.Screen
-          name={ROUTES.PROFILE}
-          component={Profile}
-          options={{
-            tabBarLabel: ({ color, focused }) => (
-              <BoldText style={{ color }}>Profile</BoldText>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Image
-                source={UserIcon}
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? COLORS.primary : '#333',
-                }}
-              />
-            ),
-            headerTitle: 'Profile',
-            headerTintColor: COLORS.black,
-            headerStyle: {
-              backgroundColor: COLORS.white,
-            },
-
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => navigation.goBack()}>
+              headerTintColor: COLORS.white,
+              headerStyle: {
+                backgroundColor: COLORS.primary,
+              },
+            }}
+          />
+          <Tab.Screen
+            name={ROUTES.WALLET}
+            component={Loyalty}
+            options={{
+              tabBarLabel: ({color, focused}) => (
+                <BoldText style={{color}}>Wallet</BoldText>
+              ),
+              tabBarIcon: ({focused}) => (
                 <Image
-                  source={backicon}
+                  source={WalletIcon}
                   style={{
-                    width: 15,
-                    height: 15,
-                    marginLeft: 15, // Adjust the margin as needed
+                    width: 25,
+                    height: 25,
+                    tintColor: focused ? COLORS.primary : '#333',
                   }}
                 />
-              </TouchableOpacity>
-            ),
+              ),
 
-            headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-               <Text style = {{width: 40, height: 40,  marginRight: 15, marginTop: 20, color:"blue"}}>Save</Text>
-              </TouchableOpacity>
-            ),
+              headerTintColor: COLORS.white,
+              headerStyle: {
+                backgroundColor: COLORS.primary,
+              },
+            }}
+          />
 
-          }}
-        />
-      </Tab.Navigator>
+          <Tab.Screen
+            name={ROUTES.TRANSACTION}
+            component={Transaction}
+            options={{
+              tabBarLabel: ({color, focused}) => (
+                <BoldText style={{color}}>Transaction</BoldText>
+              ),
+              tabBarIcon: ({focused}) => (
+                <Image
+                  source={MedalIcon}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: focused ? COLORS.primary : '#333',
+                  }}
+                />
+              ),
+
+              headerTintColor: COLORS.white,
+              headerStyle: {
+                backgroundColor: COLORS.primary,
+              },
+            }}
+          />
+
+          <Tab.Screen
+            name={ROUTES.SETTINGS_NAVIGATOR}
+            component={SettingsNavigator}
+            options={{
+              tabBarLabel: ({color, focused}) => (
+                <BoldText style={{color}}>Settings</BoldText>
+              ),
+              tabBarIcon: ({focused}) => (
+                <Image
+                  source={GroupIcon}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: focused ? COLORS.primary : '#333',
+                  }}
+                />
+              ),
+
+              headerTintColor: COLORS.white,
+              headerStyle: {
+                backgroundColor: COLORS.primary,
+              },
+            }}
+          />
+
+          <Tab.Screen
+            name={ROUTES.PROFILE}
+            component={Profile}
+            options={{
+              tabBarLabel: ({color, focused}) => (
+                <BoldText style={{color}}>Profile</BoldText>
+              ),
+              tabBarIcon: ({focused}) => (
+                <Image
+                  source={UserIcon}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: focused ? COLORS.primary : '#333',
+                  }}
+                />
+              ),
+
+              headerTintColor: COLORS.white,
+              headerStyle: {
+                backgroundColor: COLORS.primary,
+              },
+            }}
+          />
+        </Tab.Navigator>
 
     </SafeAreaProvider>
   );
@@ -213,10 +171,10 @@ function BottomTabNavigator() {
 export default BottomTabNavigator;
 
 const styles = StyleSheet.create({
-
-  container: {
+ 
+  container:{
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor:'#fff'
   }
 });
 
@@ -350,4 +308,3 @@ const styles = StyleSheet.create({
 // }
 
 // export default BottomTabNavigator;
-
