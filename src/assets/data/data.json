@@ -1,0 +1,48 @@
+[
+    {
+      "storeid": 1,
+      "image": "https://www.shutterstock.com/image-vector/grocery-store-front-commercial-property-260nw-1728521551.jpg",
+      "name": "Hasan Store",
+      "status": "yes",
+      "closesAt": "10:30 pm",
+      "delivery": "yes",
+      "rating": 4.5
+    },
+    {
+      "storeid": 2,
+      "image": "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JvY2VyeSUyMHN0b3JlfGVufDB8fDB8fHww&w=1000&q=80",
+      "name": "Smith's Mart",
+      "status": "no",
+      "closesAt": "09:00 pm",
+      "delivery": "no",
+      "rating": 3.8
+    },
+    {
+      "storeid": 3,
+      "image": "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_center,w_730,h_487/stock%2Fshutterstock_373602469",
+      "name": "SuperMart",
+      "status": "yes",
+      "closesAt": "11:45 pm",
+      "delivery": "yes",
+      "rating": 4.0
+    },
+    {
+      "storeid": 4,
+      "image": "https://media.istockphoto.com/id/912819604/vector/storefront-flat-design-e-commerce-icon.jpg?s=612x612&w=0&k=20&c=_x_QQJKHw_B9Z2HcbA2d1FH1U1JVaErOAp2ywgmmoTI=",
+      "name": "Quick Mart",
+      "status": "yes",
+      "closesAt": "08:15 pm",
+      "delivery": "no",
+      "rating": 4.9
+    },
+    {
+      "storeid": 5,
+      "image": "https://media.istockphoto.com/id/912819604/vector/storefront-flat-design-e-commerce-icon.jpg?s=612x612&w=0&k=20&c=_x_QQJKHw_B9Z2HcbA2d1FH1U1JVaErOAp2ywgmmoTI=",
+      "name": "Green Grocers",
+      "status": "yes",
+      "closesAt": "09:30 pm" ,
+      "delivery": "yes",
+      "rating": 4.2
+    }
+  ];
+  

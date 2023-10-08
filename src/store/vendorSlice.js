@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   vendor: {},
 };
 
 const vendorSlice = createSlice({
-  name: "vendor",
+  name: 'vendor',
   initialState,
   reducers: {
     addVendorDetail: (state, action) => {
@@ -14,6 +14,6 @@ const vendorSlice = createSlice({
   },
 });
 
-export const { addVendorDetail } = vendorSlice.actions;
+export const {addVendorDetail} = vendorSlice.actions;
 
 export default vendorSlice.reducer;

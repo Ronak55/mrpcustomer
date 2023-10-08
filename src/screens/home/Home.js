@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, View, Dimensions, Text} from 'react-native';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { request, PERMISSIONS } from 'react-native-permissions';
+import {request, PERMISSIONS} from 'react-native-permissions';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.5;
@@ -16,12 +16,12 @@ const Home = () => {
   const [initialRegion, setInitialRegion] = useState(null);
 
   useEffect(() => {
-    request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((result) => {
+    request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(result => {
       console.log('Permission Result:', result);
       if (result === 'granted') {
         Geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
+          position => {
+            const {latitude, longitude} = position.coords;
             console.log('Position:', latitude, longitude);
             const region = {
               latitude: parseFloat(latitude),
@@ -32,15 +32,15 @@ const Home = () => {
             setInitialRegion(region);
             console.log(initialRegion);
           },
-          (error) => console.log(error),
-          { enableHighAccuracy: false, timeout: 10000, maximumAge: 0 }
+          error => console.log(error),
+          {enableHighAccuracy: false, timeout: 10000, maximumAge: 0},
         );
       }
     });
   }, []);
 
-  const handleMapPress = (event) => {
-    const { coordinate } = event.nativeEvent;
+  const handleMapPress = event => {
+    const {coordinate} = event.nativeEvent;
     const newMarker = {
       coordinate,
       title: `Marker ${markers.length + 1}`,
@@ -61,8 +61,7 @@ const Home = () => {
           initialRegion={initialRegion}
           zoomEnabled={true}
           zoomControlEnabled={true}
-          onPress={handleMapPress}
-        >
+          onPress={handleMapPress}>
           {markers.map((marker, index) => (
             <Marker
               key={index}
