@@ -1,9 +1,13 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
+import Home from '../screens/home/Home.js';
+import LinearGradient from 'react-native-linear-gradient';
+import { ROUTES } from '../constants';
 
 const golden = '#E18421';
-const SwitchButton = () => {
+const SwitchButton = ({navigation}) => {
   const [selectedTab, setSelectedTab] = useState(0);
+  
   return (
     <View style={{flex: 1}}>
       <View
@@ -18,7 +22,10 @@ const SwitchButton = () => {
           flexDirection: 'row',
           alignItems: 'center',
           paddingLeft: 5,
+          elevation: 2, // Set the elevation (z-index) for SwitchButton
+          zIndex: 2, // Optional: Set the zIndex for SwitchButton
           paddingRight: 5,
+        
         }}>
         <TouchableOpacity
           style={{
@@ -51,7 +58,9 @@ const SwitchButton = () => {
             alignItems: 'center',
           }}
           onPress={() => {
-            setSelectedTab(1);
+
+            selectedTab(1);
+            // navigation.navigate(ROUTES.OFFERS);
           }}>
           <Text
             style={{
@@ -63,15 +72,18 @@ const SwitchButton = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      <View>
       {selectedTab == 0 ? (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text>store</Text>
-        </View>
+      <View style = {{elevation: 1, zIndex: 1}}>
+       <Home />
+       </View>
       ) : (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+         
           <Text>offers</Text>
         </View>
       )}
+      </View>
     </View>
   );
 };
